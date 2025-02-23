@@ -1,0 +1,22 @@
+# NLP Libraries
+spacy
+nltk
+pyspellchecker
+textblob
+pyspellchecker
+
+# Resume Parsing & Preprocessing
+pdfplumber==0.10.3
+
+# Machine Learning & Data Handling & visualization
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+spacy-streamlit  # NLP model visualization
+
+# webscrapping
+beautifulsoup4
+requests
+selenium
