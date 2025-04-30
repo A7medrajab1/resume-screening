@@ -11,6 +11,7 @@ pymupdf
 
 # Machine Learning & Data Handling & visualization
 scikit-learn
+xgboost
 pandas
 numpy
 matplotlib
