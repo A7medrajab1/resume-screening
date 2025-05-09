@@ -8,7 +8,7 @@ from job_description_utils import extract_text_from_pdf, parse_job_descriptions,
 #######################################--Models--#######################################
 llm_llama_4_maver = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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", 
+    api_key="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", 
     model="meta-llama/llama-4-maverick:free",
     temperature=0.0,
     name="Llama-4-Maverick"
@@ -16,7 +16,7 @@ llm_llama_4_maver = ChatOpenAI(
 
 llm_deepseek_R1 = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    api_key="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",
     model="deepseek/deepseek-r1:free",
     temperature=0.0,
     name="DeepSeek-R1"
@@ -24,7 +24,7 @@ llm_deepseek_R1 = ChatOpenAI(
 
 llm_qwen3_14B = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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",
+    api_key="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",
     model="qwen/qwen3-14b:free",
     temperature=0.0,
     name="Qwen3-14B"

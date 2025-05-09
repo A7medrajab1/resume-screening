@@ -3,159 +3,176 @@ import streamlit as st
 import tempfile
 import os
 import json
+import requests
 from resume_parser import extract_text_from_pdf
 from resume_analyzer import analyze_resume
 from chat_memory import init_db, save_message, get_chat_history, clear_chat_history
-import requests
-# Initialize DB
+from auth import init_users_db, register_user, login_user
+
+# === Initialize Databases ===
 init_db()
+init_users_db()
 
-# Simulated user ID (can use login system later)
-USER_ID = "demo_user"
-
+# === Configure Streamlit ===
 st.set_page_config(page_title="HR Resume Chatbot", layout="centered")
 st.title("📄 HR Resume Chatbot")
 st.markdown("Upload your resume (PDF) to get job suggestions, a score, and tips!")
 
-# Handle file upload
+# === Session state init ===
+if 'logged_in' not in st.session_state:
+    st.session_state.logged_in = False
+    st.session_state.user_data = None
+
+# === Login/Register UI ===
+def login_ui():
+    st.subheader("🔐 Login or Register")
+    tab1, tab2 = st.tabs(["Login", "Register"])
+
+    with tab1:
+        email = st.text_input("Email", key="login_email")
+        password = st.text_input("Password", type="password", key="login_pass")
+        if st.button("Login"):
+            success, user_data = login_user(email, password)
+            if success:
+                if success:
+                    st.session_state.logged_in = True
+                    st.session_state.user_data = user_data
+                    # st.success(f"Welcome back, {user_data['name']}!")
+                    st.rerun()
+            else:
+                st.error("Invalid email or password.")
+
+    with tab2:
+        name = st.text_input("Full Name", key="reg_name")
+        email = st.text_input("Email", key="reg_email")
+        password = st.text_input("Password", type="password", key="reg_pass")
+        gender = st.radio("Gender", ["Male", "Female", "Other"], key="reg_gender")
+        if st.button("Register"):
+            if not name or not email or not password:
+                st.error("Please fill all fields.")
+            else:
+                success, msg = register_user(name, email, password, gender)
+                if success:
+                        success, user_data = login_user(email, password)
+                        st.session_state.logged_in = True
+                        st.session_state.user_data = user_data
+                        st.rerun()
+                else:
+                    st.error(msg)
+
+
+# === Require Login ===
+if not st.session_state.logged_in:
+    login_ui()
+    st.stop()
+
+# === Logged-in Info ===
+USER_ID = st.session_state.user_data['user_id']
+user_name = user_name = st.session_state.user_data['name']
+with st.sidebar:
+    user_name = st.session_state.user_data['name']
+    st.markdown(
+        f"""
+        <div style='
+            background-color: #2E8B57;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        '>
+            <h3 style='margin-bottom: 5px;'>👋 Welcome, {user_name}!</h3>
+            <p style='font-size: 14px;'>You're logged into the HR Resume Chatbot.</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    # Description of Sidebar Purpose
+    st.markdown(
+        """
+        **What can you do here?**
+        - Upload your resume and job description.
+        - Analyze and get tailored job suggestions.
+        - Chat with the HR bot for resume tips.
+        """,
+        unsafe_allow_html=True
+    )
+    st.markdown("---")
+
+    # Centered Logout Button
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("Logout"):
+            st.session_state.logged_in = False
+            st.session_state.user_data = None
+            st.rerun()
+
+
+# === Resume Upload ===
 uploaded_file = st.file_uploader("Upload your resume (PDF)", type=["pdf"])
 
+# === Optional Job Description Upload ===
 st.markdown("---")
 st.markdown("Optionally upload a Job Description (PDF) to get a tailored analysis.")
-
 jd_file = st.file_uploader("Upload job description (PDF)", type=["pdf"], key="jd")
 
-jd_text = None
-if jd_file:
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_jd:
-        tmp_jd.write(jd_file.read())
-        jd_path = tmp_jd.name
+def extract_pdf_text(uploaded_file):
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
+        tmp.write(uploaded_file.read())
+        tmp_path = tmp.name
+    text = extract_text_from_pdf(tmp_path)
+    os.remove(tmp_path)
+    return text
 
-    # Extract JD text
-    jd_text = extract_text_from_pdf(jd_path)
-    os.remove(jd_path)
-
-    
-
+jd_text = extract_pdf_text(jd_file) if jd_file else None
 
 if uploaded_file:
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
-        tmp_file.write(uploaded_file.read())
-        tmp_path = tmp_file.name
+    resume_text = extract_pdf_text(uploaded_file)
 
-    # Extract resume text
-    resume_text = extract_text_from_pdf(tmp_path)
-    os.remove(tmp_path)
+    # === Analyze Resume ===
+    if st.button("🔍 Analyze Resume"):
+        with st.spinner("Analyzing your resume..."):
+            result = analyze_resume(resume_text, jd_text)
 
-    if resume_text:
-        st.subheader("📋 Resume Summary")
-        st.text_area("Extracted Resume Text", resume_text, height=300)
+        try:
+            parsed = json.loads(result)
+            pretty_response = (
+                f"💼 **Suggested Job Titles:**\n" +
+                "\n".join([f"- {t}" for t in parsed.get("job_titles", [])]) + "\n\n" +
+                f"📊 **Resume Score:** **{parsed.get('score', 'N/A')} / 100**\n\n" +
+                "🛠️ **Suggestions to Improve:**\n" +
+                "\n".join([f"- {s}" for s in parsed.get("suggestions", [])])
+            )
 
-        if jd_text:
-            st.subheader("📄 Job Description Summary")
-            st.text_area("Extracted Job Description", jd_text, height=200)
+            save_message(USER_ID, "user", "Analyze Resume")
+            save_message(USER_ID, "assistant", pretty_response)
 
-        # Analyze button
-        if st.button("🔍 Analyze Resume"):
-            with st.spinner("Analyzing your resume..."):
-                result = analyze_resume(resume_text, jd_text)  
+            st.success("✅ Analysis complete!")
+            st.markdown(pretty_response)
 
-            try:
-                parsed = json.loads(result)
-                # st.success("✅ Analysis complete!")
+        except json.JSONDecodeError:
+            st.error("⚠️ Failed to parse the response. Please try again.")
+            st.text(result)
 
-                # st.subheader("💼 Suggested Job Titles")
-                # for title in parsed.get("job_titles", []):
-                #     st.markdown(f"- {title}")
-
-                # st.subheader("📊 Resume Score")
-                # st.markdown(f"**{parsed.get('score', 'N/A')} / 100**")
-
-                # st.subheader("🛠️ Suggestions to Improve")
-                # for suggestion in parsed.get("suggestions", []):
-                #     st.markdown(f"- {suggestion}")
-
-                # Save result to chat history
-                save_message(USER_ID, "user", "Analyze Resume")
-
-                pretty_response = (
-                    f"💼 **Suggested Job Titles:**\n" +
-                    "\n".join([f"- {t}" for t in parsed.get("job_titles", [])]) + "\n\n" +
-                    f"📊 **Resume Score:** **{parsed.get('score', 'N/A')} / 100**\n\n" +
-                    "🛠️ **Suggestions to Improve:**\n" +
-                    "\n".join([f"- {s}" for s in parsed.get("suggestions", [])])
-                )
-
-                save_message(USER_ID, "assistant", pretty_response)
-
-
-            except json.JSONDecodeError:
-                st.error("⚠️ Failed to parse the response. Please try again.")
-                st.text(result)
-
-
-# Resume-related Q&A
+# === Chat History ===
 st.divider()
 st.subheader("💬 Chat with the HR Bot")
-
-
-# # Show chat history
 history = get_chat_history(USER_ID, limit=None)
 for role, message in history:
     with st.chat_message(role):
         st.markdown(message)
 
-# Clear chat history button
-if 'confirm_delete' not in st.session_state:
-    st.session_state.confirm_delete = False
-
-if st.button("🗑️ Clear All Chat History"):
-    st.session_state.confirm_delete = True
-
-if st.session_state.confirm_delete:
-    st.warning("Are you sure you want to delete all chat history? This cannot be undone.")
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Yes, delete all history"):
-            clear_chat_history(USER_ID)
-            st.refresh()
-    with col2:
-        if st.button("Cancel"):
-            st.session_state.confirm_delete = False
-
-# New user message
+# === Chat Input ===
 if user_question := st.chat_input("Ask anything about your resume..."):
-    # Save and show user message
     save_message(USER_ID, "user", user_question)
     with st.chat_message("user"):
         st.markdown(user_question)
 
-    # Prepare full chat + new message for LLM
     past = get_chat_history(USER_ID)
     messages = [{"role": role, "content": msg} for role, msg in past]
     messages.append({"role": "user", "content": user_question})
-    # Divider
-    st.divider()
-    st.subheader("⚠️ Danger Zone")
-    # Clear chat history button
-    if 'confirm_delete' not in st.session_state:
-        st.session_state.confirm_delete = False
 
-    if st.button("🗑️ Clear All Chat History"):
-        st.session_state.confirm_delete = True
-
-    if st.session_state.confirm_delete:
-        st.warning("Are you sure you want to delete all chat history? This cannot be undone.")
-        col1, col2 = st.columns(2)
-        with col1:
-            if st.button("Yes, delete all history"):
-                clear_chat_history(USER_ID)
-                st.refresh()
-        with col2:
-            if st.button("Cancel"):
-                st.session_state.confirm_delete = False
-    
-    # 3. Call LLM with memory
     headers = {
         "Authorization": f"Bearer {os.getenv('OPENAI_API_KEY')}",
         "Content-Type": "application/json",
@@ -174,23 +191,30 @@ if user_question := st.chat_input("Ask anything about your resume..."):
                 data=json.dumps(payload)
             )
             res.raise_for_status()
-            
-            # Get the response content from JSON and format it
-            data = res.json()
-            message_content = data["choices"][0]["message"]["content"]
-            content = message_content
-
+            message_content = res.json()["choices"][0]["message"]["content"]
         except Exception as e:
-            content = f"Error: {e}"
+            message_content = f"Error: {e}"
 
-        # ✅ Always show the assistant's message whether success or error
         with st.chat_message("assistant"):
-            st.markdown(content)
+            st.markdown(message_content)
 
-        # ✅ Save the assistant's message
-        save_message(USER_ID, "assistant", content)
-        
+        save_message(USER_ID, "assistant", message_content)
 
-        
+# === Clear Chat History ===
+st.divider()
+if 'confirm_delete' not in st.session_state:
+    st.session_state.confirm_delete = False
 
+if st.button("🗑️ Clear All Chat History"):
+    st.session_state.confirm_delete = True
 
+if st.session_state.confirm_delete:
+    st.warning("Are you sure you want to delete all chat history? This cannot be undone.")
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("Yes, delete all history"):
+            clear_chat_history(USER_ID)
+            st.experimental_rerun()
+    with col2:
+        if st.button("Cancel"):
+            st.session_state.confirm_delete = False

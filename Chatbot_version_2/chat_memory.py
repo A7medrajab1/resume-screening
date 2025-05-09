@@ -5,7 +5,7 @@ import sqlite3
 import os
 from datetime import datetime
 
-DB_FILE = "chat_memory.db"
+DB_FILE = "./DB/chat_memory.db"
 
 def init_db():
     conn = sqlite3.connect(DB_FILE)
@@ -33,7 +33,7 @@ def save_message(user_id, role, message):
     conn.close()
 
 def get_chat_history(user_id, limit=None):
-    conn = sqlite3.connect("chat_memory.db")
+    conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
 
     if limit is not None:
