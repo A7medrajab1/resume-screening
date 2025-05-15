@@ -27,8 +27,7 @@ Before running the code, ensure the following are installed:
   - `PyPDF2`
   - `sklearn`
   - `nltk`
-  - `openai` *(for GPT integration if used)*
-  - `streamlit` *(if used for deployment)*
+  - `streamlit` *(deployment)*
 
 Install dependencies using:
 ```
