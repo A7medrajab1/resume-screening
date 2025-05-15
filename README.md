@@ -97,8 +97,6 @@ resume-screening/
 
 ## Resources
 - Refer to the core analyzer script [here](https://github.com/A7medrajab1/resume-screening/blob/main/Chatbot_version_1/resume_analyzer.py).
-- Figma mockups and UI prototypes *(if any)*.
-- API reference and documentation *(if external APIs used)*.
 
 ## Contributors
 - Malak Mohamed - [GitHub](https://github.com/MalakMohameed)  
