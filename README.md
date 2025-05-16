@@ -35,7 +35,7 @@ This project was developed as part of our **DEPI Internship in collaboration wit
   - Tokenization, Named Entity Recognition (NER), Part-of-Speech tagging
   - Used to extract structured data from unstructured resumes
 - **Large Language Models (LLMs)** (optional/future-ready):
-  - Models like **GPT-3.5/4 via OpenAI API** for feedback generation
+  - Models like **Openrouter API** for feedback generation
   - Used for semantic comparison between resumes and job descriptions
 - **Text Similarity & Semantic Matching**:
   - TF-IDF Vectorization
@@ -63,7 +63,7 @@ This project was developed as part of our **DEPI Internship in collaboration wit
 - ✅ Extracts skills, experience, education, and keywords from resumes
 - ✅ Compares resumes against job descriptions using NLP
 - ✅ Ranks candidates based on job relevance
-- ✅ Provides **human-readable feedback** via GPT (optional)
+- ✅ Provides **human-readable feedback** 
 - ✅ Modular and easy to extend for new features
 - ✅ Prepares the system for chatbot integration (future)
 
@@ -107,8 +107,6 @@ source env/bin/activate  # On Windows: env\Scripts\activate
 ```
 pip install -r ../requirements.txt
 ```
-
-> **Note**: For GPT functionality, set up your API key from [OpenAI](https://platform.openai.com) in a `.env` or config file.
 
 ---
 
