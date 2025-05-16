@@ -134,10 +134,9 @@ Feedback:
 
 ## 🖼️ Screenshots
 
-| Chatbot Resume Upload | Login & Register | Feedback View |
-|------------------------|------------------|----------------|
-| ![Chatbot Upload](https://github.com/user-attachments/assets/9ec36c7d-b4eb-4f4a-b06d-df5ecf2155b8/22681EC3-9130-4B6A-9BD1-B73EBE60AD34) | ![Login/Register](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91/ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7) | *(Add feedback screenshot here when available)* |
-
+| Chatbot Resume Upload | Login & Register | Matching Results & Feedback |
+|------------------------|------------------|------------------------------|
+| ![Chatbot Upload](https://github.com/user-attachments/assets/9ec36c7d-b4eb-4f4a-b06d-df5ecf2155b8/22681EC3-9130-4B6A-9BD1-B73EBE60AD34) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91/ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7) <br> |
 
 ---
 
@@ -156,7 +155,7 @@ Feedback:
 
 - **Malak Mohamed** – [GitHub](https://github.com/MalakMohameed)
 - **Ahmed Rajab** – [GitHub](https://github.com/A7medrajab1)
-- **Remon Raafat** - [GitHub]([https://github.com/A7medrajab1](https://github.com/remoraafat)
+- **Remon Raafat** - [GitHub](https://github.com/remoraafat)
 
 ---
 
