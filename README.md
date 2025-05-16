@@ -1,4 +1,4 @@
-# 💼 Resume Screening System  
+![4D7A823A-1BB1-4A3C-ABB1-9660C2B3CC5D](https://github.com/user-attachments/assets/04d49b67-d94f-48df-a0d3-1ad736dc80d4)# 💼 Resume Screening System  
 **Final Project – DEPI Internship | Banque Misr**
 
 A smart, AI-powered resume screening application that leverages **Natural Language Processing (NLP)** and **Large Language Models (LLMs)** to automate and optimize the hiring process. Built to help HR professionals efficiently filter and evaluate resumes based on job requirements.
@@ -136,7 +136,8 @@ Feedback:
 
 | Chatbot Resume Upload | Login & Register | Matching Results & Feedback |
 |----------------------|------------------|----------------------------|
-| ![Chatbot Upload](https://github.com/user-attachments/assets/c4532bfc-34d5-4c41-bcb3-c2455cc307b9) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91/ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7) <br> Simple and secure login and registration forms for candidate access. | ![Matching Results & Feedback](https://github.com/user-attachments/assets/c17361f0-42aa-4d7f-affc-d83c09df2648) <br> View AI-generated matching results with job descriptions and get real-time feedback on how well the resume matches the position. |
+| ![Chatbot Upload](https://github.com/user-attachments/assets/c4532bfc-34d5-4c41-bcb3-c2455cc307b9) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c17361f0-42aa-4d7f-affc-d83c09df2648) <br> Simple and secure login and registration forms for candidate access. | ![Matching Results & Feedback](https://github.com/user-attachments/assets/43b68cda-e28b-40cf-90e0-5c3ea979488f)
+<br> View AI-generated matching results with job descriptions and get real-time feedback on how well the resume matches the position. |
 
 ---
 
