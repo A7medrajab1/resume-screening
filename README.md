@@ -1,2 +1,5 @@
 # resume-screening
 The Resume Screening Project aims to develop a machine learning model that automates the process of screening resumes for job applications.
+
+# HR Resume Chatbot
+The HR Resume Chatbot is an AI-powered web application designed to help job seekers optimize their resumes for better job opportunities. Users can upload their resume and optionally a job description in PDF format. The app analyzes the resume, provides a score, suggests relevant job titles, and offers actionable tips for improvement. It also includes a chatbot feature that allows users to interactively ask questions about their resume. The system supports user registration and login, stores personalized chat history, and leverages large language models to deliver accurate feedback, all within a user-friendly Streamlit interface.
