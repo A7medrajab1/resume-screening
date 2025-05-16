@@ -148,8 +148,8 @@ if uploaded_file:
             save_message(USER_ID, "user", "Analyze Resume")
             save_message(USER_ID, "assistant", pretty_response)
 
-            # st.success("✅ Analysis complete!")
-            # st.markdown(pretty_response)
+            st.success("✅ Analysis complete!")
+            st.markdown(pretty_response)
 
         except json.JSONDecodeError:
             st.error("⚠️ Failed to parse the response. Please try again.")
