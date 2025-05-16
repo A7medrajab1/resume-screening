@@ -163,7 +163,7 @@ Feedback:
 
 ## 🏢 Developed For
 
-This project was built as part of the **Digital Egypt Pioneers Initiative (DEPI)** and **Banque Misr Internship Program**, focusing on solving real-world HR problems using Artificial Intelligence and modern software engineering practices.
+This project was built as part of the **Digital Egypt Pioneers Initiative (DEPI)** and **EYouth**, focusing on solving real-world HR problems using Artificial Intelligence and modern software engineering practices.
 
 ---
 
