@@ -1,107 +1,172 @@
-# Resume Screening App  
-This project represents our **Final DEPI Project**. It is a machine learning-based resume screening system that streamlines the hiring process by automatically analyzing and evaluating resumes.
+# 💼 Resume Screening System  
+**Final Project – DEPI Internship | Banque Misr**
 
-## Overview  
-The Resume Screening project is designed to reduce the time and effort spent by HR teams during the candidate selection process. It uses natural language processing (NLP) and machine learning to assess resumes based on job descriptions and required qualifications.
+A smart, AI-powered resume screening application that leverages **Natural Language Processing (NLP)** and **Large Language Models (LLMs)** to automate and optimize the hiring process. Built to help HR professionals efficiently filter and evaluate resumes based on job requirements.
 
-The system flags qualified candidates and generates feedback in a human-readable format to support decision-making.
+---
 
-The main logic of the application resides in the [`resume_analyzer.py`](https://github.com/A7medrajab1/resume-screening/blob/main/Chatbot_version_1/resume_analyzer.py) file located in the `Chatbot_version_1` directory.
+## 📌 Table of Contents
 
-## Features
+- [Overview](#-overview)
+- [Tech Stack](#-tech-stack)
+- [Features](#-features)
+- [System Architecture](#-system-architecture)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Sample Output](#-sample-output)
+- [Screenshots](#-screenshots)
+- [Future Improvements](#-future-improvements)
+- [Contributors](#-contributors)
 
-This system includes several core features:
-- **Resume Parsing:** Extracts relevant content from PDF and text resumes.
-- **Job Matching:** Compares candidate qualifications with job descriptions.
-- **Skills Extraction:** Identifies and highlights technical and soft skills.
-- **Feedback Generation:** Produces concise feedback indicating match level.
-- **Interactive Chatbot Integration:** Future-ready for chatbot interaction for real-time screening.
+---
 
-## Prerequisites
+## 📄 Overview
 
-Before running the code, ensure the following are installed:
-- Python 3.7 or later
-- Required Python packages:
-  - `pandas`
-  - `spacy`
-  - `PyPDF2`
-  - `sklearn`
-  - `nltk`
-  - `streamlit` *(deployment)*
+Recruitment is often slowed down by manual resume screening. This project introduces a smart resume screening system that uses **NLP**, **LLMs**, and **data analysis** techniques to evaluate resumes by extracting key information like skills, experience, and education. It automatically compares resumes to job descriptions and provides feedback on candidate-job fit.
 
-Install dependencies using:
-```
+This project was developed as part of our **DEPI Internship in collaboration with Banque Misr**, showcasing the potential of **AI in HR tech**.
 
-pip install -r requirements.txt
+---
 
-```
+## 🛠️ Tech Stack
 
-## Steps to Run
+### 🧠 Artificial Intelligence
+- **Natural Language Processing (NLP)**:
+  - Tokenization, Named Entity Recognition (NER), Part-of-Speech tagging
+  - Used to extract structured data from unstructured resumes
+- **Large Language Models (LLMs)** (optional/future-ready):
+  - Models like **GPT-3.5/4 via OpenAI API** for feedback generation
+  - Used for semantic comparison between resumes and job descriptions
+- **Text Similarity & Semantic Matching**:
+  - TF-IDF Vectorization
+  - Cosine Similarity for comparing candidate content to job criteria
 
-1. **Clone the repository**:
-```
+### 📚 Python Libraries
+| Library       | Purpose                                      |
+|---------------|----------------------------------------------|
+| `spaCy`       | NLP pipeline for skill/experience extraction |
+| `nltk`        | Tokenization and preprocessing               |
+| `PyPDF2`      | Extracting resume text from PDF files        |
+| `pandas`      | Data manipulation and analysis               |
+| `scikit-learn`| TF-IDF vectorization, similarity matching    |
+| `openai`      | Integration with GPT-3.5/4 (optional)        |
+| `streamlit`   | (optional) for interactive UI                |
 
-git clone [https://github.com/A7medrajab1/resume-screening.git](https://github.com/A7medrajab1/resume-screening.git)
+---
 
-```
+## ✨ Features
 
-2. **Navigate to the project directory**:
-```
+- ✅ Extracts skills, experience, education, and keywords from resumes
+- ✅ Compares resumes against job descriptions using NLP
+- ✅ Ranks candidates based on job relevance
+- ✅ Provides **human-readable feedback** via GPT (optional)
+- ✅ Modular and easy to extend for new features
+- ✅ Prepares the system for chatbot integration (future)
 
-cd resume-screening/Chatbot\_version\_1
+---
 
-```
-
-3. **Run the resume analyzer script**:
-```
-
-python resume\_analyzer.py
-
-```
-
-> *Make sure to modify any API keys or paths if needed before execution.*
-
-## Architecture  
-The project uses a **Modular Script-Based Architecture**:
-- ___Data Ingestion___: Reads resumes from local storage.
-- ___Text Preprocessing___: Cleans, tokenizes, and processes text using NLP tools.
-- ___Matching Algorithm___: Compares extracted skills/experience with job description.
-- ___Feedback Engine___: Outputs human-readable analysis or scores.
-
-## Directory Structure
+## 🧱 System Architecture
 
 ```
-
-resume-screening/
-├── Chatbot\_version\_1/
-│   ├── resume\_analyzer.py     # Main script for resume screening
-│   ├── utils.py               # Helper functions (optional)
-│   └── sample\_resumes/        # Folder containing test resume files
-├── README.md
-└── requirements.txt           # Python dependencies
-
+PDF Resumes
+   |
+   |--[PyPDF2]--> Extracted Text
+   |
+   |--[spaCy/NLTK]--> Cleaned & Tokenized Text
+   |
+   |--[TF-IDF Vectorizer]--> Feature Vector
+   |
+   |--[Cosine Similarity]--> Match Score vs Job Description
+   |
+   |--[LLM / GPT (Optional)]--> Feedback Generation
+   |
+   |--> HR Review Output
 ```
 
-## Sample Output
+---
 
-- Matched Score: 87%
-- Extracted Skills: Python, SQL, Machine Learning, Communication
-- Feedback:
-  > *“This candidate has strong programming skills and relevant experience in data analysis. Consider shortlisting.”*
+## ⚙️ Installation
 
-## Future Enhancements
-- Streamlit-based UI for HR teams.
-- Integration with chatbots for real-time interaction.
-- Support for multiple job role screening.
-- Dashboard for visual analytics.
+1. **Clone the Repository**  
+```
+git clone https://github.com/A7medrajab1/resume-screening.git
+cd resume-screening/Chatbot_version_1
+```
 
-## Resources
-- Refer to the core analyzer script [here](https://github.com/A7medrajab1/resume-screening/blob/main/Chatbot_version_1/resume_analyzer.py).
+2. **Create a Virtual Environment (Recommended)**  
+```
+python -m venv env
+source env/bin/activate  # On Windows: env\Scripts\activate
+```
 
-## Contributors
-- Malak Mohamed - [GitHub](https://github.com/MalakMohameed)  
-- Ahmed Rajab - [GitHub](https://github.com/A7medrajab1)
-- Remon Raafat - [GitHub](https://github.com/remoraafat)
+3. **Install Dependencies**  
+```
+pip install -r ../requirements.txt
+```
 
-# HR Resume Chatbot
-The HR Resume Chatbot is an AI-powered web application designed to help job seekers optimize their resumes for better job opportunities. Users can upload their resume and optionally a job description in PDF format. The app analyzes the resume, provides a score, suggests relevant job titles, and offers actionable tips for improvement. It also includes a chatbot feature that allows users to interactively ask questions about their resume. The system supports user registration and login, stores personalized chat history, and leverages large language models to deliver accurate feedback, all within a user-friendly Streamlit interface.
+> **Note**: For GPT functionality, set up your API key from [OpenAI](https://platform.openai.com) in a `.env` or config file.
+
+---
+
+## ▶️ Usage
+
+Run the main script for resume analysis:
+
+```
+python resume_analyzer.py
+```
+
+Place sample resumes inside the `/sample_resumes` folder before running.
+
+---
+
+## 🧪 Sample Output
+
+```
+Candidate: John Doe
+Match Score: 83.7%
+Extracted Skills: Python, SQL, Data Analysis, Communication
+Feedback:
+✔️ This candidate demonstrates solid technical background with 2+ years of experience in data analytics and a degree in computer science. Likely to be a strong match for data analyst roles.
+```
+
+---
+
+## 🖼️ Screenshots
+
+*Add your screenshots by uploading them to GitHub and updating the links below.*
+
+| Resume Upload Screen | Matching Results | Feedback View |
+|----------------------|------------------|----------------|
+| ![Screenshot 1](![22681EC3-9130-4B6A-9BD1-B73EBE60AD34](https://github.com/user-attachments/assets/9ec36c7d-b4eb-4f4a-b06d-df5ecf2155b8)| ![Screenshot 2] ![ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91)
+| 
+
+---
+
+## 🔮 Future Improvements
+
+- Build a **chatbot assistant** using OpenAI or LangChain for interactive Q&A
+- Add a **Streamlit-based web dashboard** for HR teams
+- Improve language support (Arabic/French resumes)
+- Deploy as a REST API (using FastAPI or Flask)
+- Store analyzed resumes in a searchable **MongoDB** or **PostgreSQL** database
+- Add OCR for scanned resumes (via Tesseract)
+
+---
+
+## 👩‍💻 Contributors
+
+- **Malak Mohamed** – [GitHub](https://github.com/MalakMohameed)
+- **Ahmed Rajab** – [GitHub](https://github.com/A7medrajab1)
+
+---
+
+## 🏢 Developed For
+
+This project was built as part of the **Digital Egypt Pioneers Initiative (DEPI)** and **Banque Misr Internship Program**, focusing on solving real-world HR problems using Artificial Intelligence and modern software engineering practices.
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
