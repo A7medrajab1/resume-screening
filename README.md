@@ -23,7 +23,7 @@ A smart, AI-powered resume screening application that leverages **Natural Langua
 
 Recruitment is often slowed down by manual resume screening. This project introduces a smart resume screening system that uses **NLP**, **LLMs**, and **data analysis** techniques to evaluate resumes by extracting key information like skills, experience, and education. It automatically compares resumes to job descriptions and provides feedback on candidate-job fit.
 
-This project was developed as part of our **DEPI Internship in collaboration with Banque Misr**, showcasing the potential of **AI in HR tech**.
+This project was developed as part of our **DEPI Internship in collaboration with EYouth**, showcasing the potential of **AI in HR tech**.
 
 ---
 
