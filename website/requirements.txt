@@ -1,5 +1,0 @@
-streamlit
-langchain
-openai
-PyMuPDF
-PyPDF2
