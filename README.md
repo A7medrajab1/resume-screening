@@ -135,8 +135,8 @@ Feedback:
 ## 🖼️ Screenshots
 
 | Chatbot Resume Upload | Login & Register | Matching Results & Feedback |
-|------------------------|------------------|------------------------------|
-| ![Chatbot Upload](https://github.com/user-attachments/assets/9ec36c7d-b4eb-4f4a-b06d-df5ecf2155b8/22681EC3-9130-4B6A-9BD1-B73EBE60AD34) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91/ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7) <br> |
+|----------------------|------------------|----------------------------|
+| ![Chatbot Upload](https://github.com/user-attachments/assets/c4532bfc-34d5-4c41-bcb3-c2455cc307b9) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c9bba242-927f-484f-9343-60249e7e2d91/ABDCBB8C-78A1-4D36-8E47-5BD6BDA5C3F7) <br> Simple and secure login and registration forms for candidate access. | ![Matching Results & Feedback](https://github.com/user-attachments/assets/c17361f0-42aa-4d7f-affc-d83c09df2648) <br> View AI-generated matching results with job descriptions and get real-time feedback on how well the resume matches the position. |
 
 ---
 
