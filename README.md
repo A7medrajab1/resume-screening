@@ -42,15 +42,16 @@ This project was developed as part of our **DEPI Internship in collaboration wit
   - Cosine Similarity for comparing candidate content to job criteria
 
 ### 📚 Python Libraries
-| Library       | Purpose                                      |
-|---------------|----------------------------------------------|
-| `spaCy`       | NLP pipeline for skill/experience extraction |
-| `nltk`        | Tokenization and preprocessing               |
-| `PyPDF2`      | Extracting resume text from PDF files        |
-| `pandas`      | Data manipulation and analysis               |
-| `scikit-learn`| TF-IDF vectorization, similarity matching    |
-| `openai`      | Integration with GPT-3.5/4 (optional)        |
-| `streamlit`   | (optional) for interactive UI                |
+
+| Library        | Purpose                                      |
+|----------------|----------------------------------------------|
+| `spaCy`        | NLP pipeline for skill and experience extraction |
+| `nltk`         | Tokenization and text preprocessing           |
+| `PyPDF2`       | Extracting resume text from PDF files         |
+| `pandas`       | Data manipulation and analysis                 |
+| `scikit-learn` | TF-IDF vectorization and similarity matching  |
+| `openrouter`   | Integration with GPT-3.5/4 API for language model capabilities  |
+| `streamlit`    | (Optional) Interactive UI for demo or visualization |
 
 ---
 
