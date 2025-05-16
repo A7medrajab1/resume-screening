@@ -1,5 +1,5 @@
 # Resume Screening App  
-This project represents our **Final Bank Misr Internship Project**. It is a machine learning-based resume screening system that streamlines the hiring process by automatically analyzing and evaluating resumes.
+This project represents our **Final DEPI Project**. It is a machine learning-based resume screening system that streamlines the hiring process by automatically analyzing and evaluating resumes.
 
 ## Overview  
 The Resume Screening project is designed to reduce the time and effort spent by HR teams during the candidate selection process. It uses natural language processing (NLP) and machine learning to assess resumes based on job descriptions and required qualifications.
