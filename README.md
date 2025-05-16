@@ -1,5 +1,5 @@
-![4D7A823A-1BB1-4A3C-ABB1-9660C2B3CC5D](https://github.com/user-attachments/assets/04d49b67-d94f-48df-a0d3-1ad736dc80d4)# 💼 Resume Screening System  
-**Final Project – DEPI Internship | Banque Misr**
+# 💼 Resume Screening System  
+**Final Project – DEPI Internship | EYouth**
 
 A smart, AI-powered resume screening application that leverages **Natural Language Processing (NLP)** and **Large Language Models (LLMs)** to automate and optimize the hiring process. Built to help HR professionals efficiently filter and evaluate resumes based on job requirements.
 
