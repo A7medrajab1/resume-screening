@@ -50,7 +50,9 @@ This project was developed as part of our **DEPI Internship in collaboration wit
 | `PyPDF2`       | Extracting resume text from PDF files         |
 | `pandas`       | Data manipulation and analysis                 |
 | `scikit-learn` | TF-IDF vectorization and similarity matching  |
-| `openrouter`   | Integration with GPT-3.5/4 API for language model capabilities  |
+| `openrouter`   | Integration API for language model capabilities  |
+| `quen`         | [Brief description of Quen's role in the project] |
+| `deepseek`     | [Brief description of DeepSeek's role in the project] |
 | `streamlit`    | (Optional) Interactive UI for demo or visualization |
 
 ---
