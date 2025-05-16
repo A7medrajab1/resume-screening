@@ -51,9 +51,10 @@ This project was developed as part of our **DEPI Internship in collaboration wit
 | `pandas`       | Data manipulation and analysis                 |
 | `scikit-learn` | TF-IDF vectorization and similarity matching  |
 | `openrouter`   | Integration API for language model capabilities  |
-| `quen`         | [Brief description of Quen's role in the project] |
-| `deepseek`     | [Brief description of DeepSeek's role in the project] |
-| `streamlit`    | (Optional) Interactive UI for demo or visualization |
+| `quen`         | AI-powered search and data retrieval for enhanced resume matching |
+| `deepseek`     | Deep learning-based semantic search to improve matching accuracy |
+| `streamlit`    | Interactive UI framework for building user-friendly web apps |
+
 
 ---
 
@@ -81,7 +82,7 @@ PDF Resumes
    |
    |--[Cosine Similarity]--> Match Score vs Job Description
    |
-   |--[LLM / GPT (Optional)]--> Feedback Generation
+   |--[LLM]--> Feedback Generation
    |
    |--> HR Review Output
 ```
@@ -142,16 +143,6 @@ Feedback:
 | ![Chatbot Upload](https://github.com/user-attachments/assets/c4532bfc-34d5-4c41-bcb3-c2455cc307b9) <br> The chatbot interface allows users to upload their resume files for screening. | ![Login/Register](https://github.com/user-attachments/assets/c17361f0-42aa-4d7f-affc-d83c09df2648) <br> Simple and secure login and registration forms for candidate access. | ![Matching Results & Feedback](https://github.com/user-attachments/assets/43b68cda-e28b-40cf-90e0-5c3ea979488f) <br> View AI-generated matching results with job descriptions and get real-time feedback on how well the resume matches the position. |
 
 
----
-
-## 🔮 Future Improvements
-
-- Build a **chatbot assistant** using OpenAI or LangChain for interactive Q&A
-- Add a **Streamlit-based web dashboard** for HR teams
-- Improve language support (Arabic/French resumes)
-- Deploy as a REST API (using FastAPI or Flask)
-- Store analyzed resumes in a searchable **MongoDB** or **PostgreSQL** database
-- Add OCR for scanned resumes (via Tesseract)
 
 ---
 
